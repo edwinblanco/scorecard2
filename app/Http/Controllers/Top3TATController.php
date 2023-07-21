@@ -12,14 +12,15 @@ class Top3TATController extends Controller
      */
     public function index()
     {
-        $lista_productividad = Top_3_TAT::all();
+        $lista_productividad = Top_3_TAT::all()->sortBy('top');
+        $top3 = Top_3_TAT::count();
         $ban = 1;
-        return view('productividad.lista_top3_tat_admin', compact('lista_productividad', 'ban'));
+        return view('productividad.lista_top3_tat_admin', compact('lista_productividad', 'ban', 'top3'));
     }
 
     public function index_tablero()
     {
-        $lista_productividad = Top_3_TAT::all();
+        $lista_productividad = Top_3_TAT::all()->sortBy('top');
         $ban = 1;
         return view('productividad.lista_top3_tat', compact('lista_productividad', 'ban'));
     }
@@ -29,7 +30,18 @@ class Top3TATController extends Controller
      */
     public function create()
     {
-        //
+        $top3 = Top_3_TAT::count();
+        for ($i=0; $i < 3-$top3; $i++) {
+            $top = new Top_3_TAT();
+            $top->auxiliar = "Sin definir";
+            $top->cajas = 0;
+            $top->unidades = 0;
+            $top->top = $i+1;
+            $top->save();
+        }
+
+        return redirect('/top3tatadmin');
+
     }
 
     /**
@@ -54,15 +66,24 @@ class Top3TATController extends Controller
     public function edit($id)
     {
         $top = Top_3_TAT::find($id);
-        return view('productividad.editar_toptat', compact('top'));
+        $ban = 1;
+        return view('productividad.editar_toptat', compact('top', 'ban'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Top_3_TAT $top_3_TAT)
+    public function update(Request $request, $id)
     {
-        //
+        $top = Top_3_TAT::find($id);
+        $top->auxiliar = $request->aux;
+        $top->cajas = $request->cajas;
+        $top->unidades = $request->unidades;
+        $top->top = $request->top;
+
+        $top->save();
+
+        return redirect('top3tatadmin');
     }
 
     /**

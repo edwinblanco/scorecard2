@@ -1,0 +1,53 @@
+.main-sidebar {
+    background-color: #021859 !important;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.button-custom{
+    background-color: #021859;
+    color: white;
+}
+
+.button-custom:hover{
+    border: #021859 solid 1px;
+}
+
+.banner-container {
+    position: relative;
+
+    /* Permite posicionar elementos internos de forma absoluta */
+    text-align: center;
+    /* Centra el texto horizontalmente */
+}
+
+.banner-text {
+    position: absolute;
+    /* Permite posicionar el texto de forma absoluta dentro del contenedor */
+    bottom: 35%;
+    /* Distancia desde la parte inferior del contenedor */
+    left: 55%;
+    /* Centra el texto horizontalmente */
+    transform: translateX(-10%);
+    /* Centra el texto exactamente en el medio */
+    color: white;
+    /* Color del texto */
+    font-size: 40px;
+    /* Tamaño del texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Sombra para mejorar la legibilidad del texto en la imagen */
+}
+
+#contain {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+#table_scroll {
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}

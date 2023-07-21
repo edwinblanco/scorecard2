@@ -3,17 +3,16 @@
 @section('content')
     <div class="container">
         <table class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
-                <thead>
-                    <tr>
-                        <th scope="col">Auxiliar</th>
-                        <th scope="col">Cajas</th>
-                        <th scope="col">Unidades</th>
-                    </tr>
-                </thead>
-            </table>
+            <thead>
+                <tr>
+                    <th scope="col" class="auxiliar">Auxiliar</th>
+                    <th scope="col" class="cajas">Cajas</th>
+                    <th scope="col" class="unidades">Unidades</th>
+                </tr>
+            </thead>
+        </table>
         <div id="contain">
-            <table border="0" id="table_scroll"
-                class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
+            <table border="0" id="table_scroll" class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
                 <tbody>
                     @foreach ($lista_productividad as $obj)
                         <tr>
@@ -37,6 +36,21 @@
             });
         });
     </script>-->
+
+    <script>
+        window.onload = function () {
+            // Obtener las celdas de la segunda tabla
+            const cells = document.querySelectorAll('#table_scroll tbody tr:first-child td');
+
+            // Obtener los encabezados de la primera tabla
+            const headers = document.querySelectorAll('.table thead th');
+
+            // Asignar el ancho de las celdas de la segunda tabla a los encabezados de la primera tabla
+            headers.forEach((header, index) => {
+                header.style.width = `${cells[index].clientWidth}px`;
+            });
+        };
+    </script>
 
     <!-- Script de jQuery para el desplazamiento automático -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -80,5 +94,11 @@
                 $('#' + id_header + ' > thead th:nth-child(' + i + ')').css('width', th_width + 'px');
             }
         }
+
+        // Función para recargar la página cada 5 minutos (300000milisegundos)
+        setInterval(function() {
+            location.reload();
+        }, 300000); // 300000 milisegundos = 5 minutos
+
     </script>
 @endsection

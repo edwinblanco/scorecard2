@@ -14,6 +14,21 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
 
     <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .button-custom{
+            background-color: #021859;
+            color: white;
+        }
+
+        .button-custom:hover{
+            border: #021859 solid 1px;
+        }
+
         .banner-container {
             position: relative;
 
@@ -55,22 +70,23 @@
 
 <body>
 
-    <div class="container mt-4 mb-2">
-        <div class="row">
-            <div class="col banner-container">
-                <!-- Banner utilizando la clase "img-fluid" para hacer la imagen responsive -->
-                <img
-                src="@if ($ban = 1)
-                {{ asset('banners/Banner Productividad.png') }}
-                @elseif ($ban = 2)
-                {{ asset('banners/Aseo Baño.png') }}
-                @endif"
-                alt="Banner" class="img-fluid img-fluid-a">
+    <div class="container-fluid mx-0 my-0 mb-2 p-0">
+        <div class="row m-0 p-0">
+            <div class="col banner-container p-0">
+                <!-- Banner utilizando la clase "img-fluid" para hacer la imagen responsive y "w-100" para ocupar todo el ancho -->
+                <img src="@if ($ban == 1)
+                            {{ asset('banners/Banner Productividad.png') }}
+                        @elseif ($ban == 2)
+                            {{ asset('banners/Aseo Baño.png') }}
+                        @endif"
+                    alt="Banner" class="img-fluid img-fluid-a w-100"
+                    style="height: 160px;">
                 <!-- Texto dentro del banner -->
                 <!--<h1 class="banner-text">LISTA DE PRODUCTIVIDAD</h1>-->
             </div>
         </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

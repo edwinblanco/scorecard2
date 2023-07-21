@@ -16,7 +16,7 @@
                 <tbody>
                     @foreach ($lista_productividad as $index => $obj)
                         <tr>
-                            <td scope="row">{{ $index + 1 }}</td>
+                            <td scope="row">{{ $obj->top }}</td>
                             <td>{{ $obj->auxiliar }}</td>
                             <td>{{ $obj->cajas }}</td>
                             <td>{{ $obj->unidades }}</td>
@@ -40,6 +40,14 @@
 
     <!-- Script de jQuery para el desplazamiento automático -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // Función para recargar la página cada 5 minutos (300000milisegundos)
+        setInterval(function() {
+            location.reload();
+        }, 300000); // 300000 milisegundos = 5 minutos
+    </script>
+
     <!--<script>
         $(document).ready(function() {
 

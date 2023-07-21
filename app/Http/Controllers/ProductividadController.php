@@ -62,7 +62,8 @@ class ProductividadController extends Controller
     public function edit($id)
     {
         $produ = Productividad::find($id);
-        return view('productividad.editar_productividad', compact('produ'));
+        $ban = 1;
+        return view('productividad.editar_productividad', compact('produ', 'ban'));
     }
 
     /**
