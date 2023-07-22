@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => '<b>Score</b>Card',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/iconop.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -292,7 +292,7 @@ return [
     'menu' => [
         [
             'text'    => 'Productividad',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-fw fa-chart-bar',
             'submenu' => [
                 [
                     'text' => 'Principal',
@@ -319,11 +319,14 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Aseo',
+            'url'         => '/calendar',
+            'icon'        => 'fas fa-fw fa-toilet',
+        ],
+        [
+            'text'        => 'Tren de Despacho',
+            'url'         => '/trendmin',
+            'icon'        => 'fas fa-fw fa-train',
         ],
         ['header' => 'account_settings'],
         [
@@ -331,49 +334,7 @@ return [
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'cambiar conraseña',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+        
 
     ],
 

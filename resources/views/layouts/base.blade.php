@@ -78,9 +78,11 @@
                             {{ asset('banners/Banner Productividad.png') }}
                         @elseif ($ban == 2)
                             {{ asset('banners/Aseo Baño.png') }}
+                        @elseif ($ban == 3)
+                            {{ asset('banners/tren.png') }}
                         @endif"
                     alt="Banner" class="img-fluid img-fluid-a w-100"
-                    style="height: 160px;">
+                    style="height: 140px;">
                 <!-- Texto dentro del banner -->
                 <!--<h1 class="banner-text">LISTA DE PRODUCTIVIDAD</h1>-->
             </div>
