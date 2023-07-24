@@ -8,6 +8,9 @@ use App\Http\Controllers\Top3TATController;
 use App\Http\Controllers\Top3CAJASController;
 use App\Http\Controllers\CalendarAseoController;
 use App\Http\Controllers\TrenDespachoController;
+use App\Http\Controllers\CalendarRutinasController;
+use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\PersonaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,12 @@ Route::get('/top3tat', [Top3TATController::class, 'index_tablero'])->name('top3t
 Route::get('/top3caj', [Top3CAJASController::class, 'index_tablero'])->name('top3caj');
 
 Route::get('/calendar_tablero', [CalendarAseoController::class, 'index_tablero'])->name('calendar.index_tablero');
+
+Route::get('/calendar-ruti_tablero', [CalendarRutinasController::class, 'index_tablero'])->name('calendar-ruti.index_tablero');
+
+Route::get('/tablero', function () {
+    return view('tablero');
+});
 
 Route::middleware('auth')->group(function () {
 
@@ -60,6 +69,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/calendar', [CalendarAseoController::class, 'index'])->name('calendar.index');
     Route::get('/calendar/show/{id}', [CalendarAseoController::class, 'show'])->name('calendar.show');
     Route::post('/calendar/create', [CalendarAseoController::class, 'create'])->name('calendar.create');
+
+    Route::get('/calendar_ruti', [CalendarRutinasController::class, 'index'])->name('calendar-ruti.index');
+    Route::get('/calendar_ruti/show/{id}', [CalendarRutinasController::class, 'show'])->name('calendar-ruti.show');
+    Route::post('/calendar_ruti/create', [CalendarRutinasController::class, 'create'])->name('calendar-ruti.create');
+
+    Route::get('/grupos', [GrupoController::class, 'index'])->name('grupos.index');
+    Route::get('/grupos/{grupo}', [GrupoController::class, 'show'])->name('grupos.show');
+    Route::get('/grupos-create/{tipo}', [GrupoController::class, 'store'])->name('grupos.store');
+    Route::post('/grupos/{grupo}/personas', [PersonaController::class, 'store'])->name('personas.store');
 
 });
 

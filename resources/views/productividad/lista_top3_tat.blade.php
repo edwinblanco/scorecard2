@@ -48,6 +48,25 @@
         }, 300000); // 300000 milisegundos = 5 minutos
     </script>
 
+
+    <script>
+
+        // Función para recargar la página con una nueva ruta
+        function recargarConNuevaRuta() {
+            // Obtén una ruta aleatoria del arreglo
+            const nuevaRuta = "{{ route('top3caj') }}";
+            // Cambia la ubicación de la página a la nueva ruta
+            window.location.href = nuevaRuta;
+        }
+
+        // Intervalo de tiempo en milisegundos para cambiar la ruta (ejemplo: 5 segundos)
+        const intervaloTiempo = 30000; // 5000 milisegundos = 5 segundos
+
+        // Iniciar el intervalo para cambiar la ruta automáticamente
+        setInterval(recargarConNuevaRuta, intervaloTiempo);
+
+    </script>
+
     <!--<script>
         $(document).ready(function() {
 

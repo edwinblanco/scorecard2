@@ -89,6 +89,11 @@
 
             let calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
                 selectable: true,
                 dateClick: function (info) {
                     document.getElementById('eventDate').value = info.dateStr;
@@ -127,5 +132,7 @@
             calendar.render();
         });
     </script>
+
+    
 
 @stop

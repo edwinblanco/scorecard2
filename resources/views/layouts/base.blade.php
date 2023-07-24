@@ -80,6 +80,8 @@
                             {{ asset('banners/Aseo Baño.png') }}
                         @elseif ($ban == 3)
                             {{ asset('banners/tren.png') }}
+                        @elseif ($ban == 4)
+                            {{ asset('banners/Rutinas.png') }}
                         @endif"
                     alt="Banner" class="img-fluid img-fluid-a w-100"
                     style="height: 140px;">

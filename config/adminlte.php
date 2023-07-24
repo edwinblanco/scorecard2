@@ -328,13 +328,23 @@ return [
             'url'         => '/trendmin',
             'icon'        => 'fas fa-fw fa-train',
         ],
+        [
+            'text'        => 'Rutinas diarias',
+            'url'         => '/calendar_ruti',
+            'icon'        => 'fas fa-fw fa-calendar',
+        ],
+        [
+            'text'        => 'Personal',
+            'url'         => '/grupos',
+            'icon'        => 'fas fa-fw fa-users',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'perfil',
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        
+
 
     ],
 
