@@ -338,6 +338,11 @@ return [
             'url'         => '/grupos',
             'icon'        => 'fas fa-fw fa-users',
         ],
+        [
+            'text'        => 'Novedades',
+            'url'         => '/novedad_admin',
+            'icon'        => 'fas fa-fw fa-bell',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'perfil',

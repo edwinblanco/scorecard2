@@ -52,6 +52,10 @@
                                 <input type="text" class="form-control" name="name" required>
                             </div>
                             <div class="mb-3">
+                                <label for="pasillo" class="form-label">Pasillo:</label>
+                                <input type="number" class="form-control" name="pasillo" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="horario" class="form-label">Horario:</label>
                                 <select class="form-select" aria-label="Default select example" id="horario" name="horario">
                                     <option value="am">AM</option>

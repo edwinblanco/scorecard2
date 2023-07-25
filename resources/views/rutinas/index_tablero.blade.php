@@ -64,7 +64,7 @@
                 eventContent: function(arg) {
                     // Personalizar el contenido del evento para mostrar solo el título
                     return {
-                        html: `<div style="font-size: 16px;">${arg.event.title}</div>`
+                        html: `<div style="font-size: 14px;">${arg.event.title}</div>`
                     };
                 },
                 locale: 'es',
@@ -90,7 +90,7 @@
                 @foreach ($events as $event)
                     @if ($event->horario === 'am')
                         {
-                            title: '{{ $event->nombre }}',
+                            title: '{{$event->pasillo}} {{ $event->nombre }}',
                             start: '{{ $event->fecha }}',
                             allDay: true, // Indica que es un evento de día completo
                             backgroundColor: obtenerColor(
@@ -150,7 +150,7 @@
                 eventContent: function(arg) {
                     // Personalizar el contenido del evento para mostrar solo el título
                     return {
-                        html: `<div style="font-size: 16px;">${arg.event.title}</div>`
+                        html: `<div style="font-size: 14px;">${arg.event.title}</div>`
                     };
                 },
                 locale: 'es',
@@ -176,7 +176,7 @@
                 @foreach ($events as $event)
                     @if ($event->horario === 'pm')
                         {
-                            title: '{{ $event->nombre }} - {{ $event->horario }}',
+                            title: '{{$event->pasillo}} {{ $event->nombre }}',
                             start: '{{ $event->fecha }}',
                             allDay: true, // Indica que es un evento de día completo
                             backgroundColor: obtenerColor(
@@ -208,7 +208,7 @@
         // Función para recargar la página con una nueva ruta
         function recargarConNuevaRuta() {
             // Obtén una ruta aleatoria del arreglo
-            const nuevaRuta = "{{ route('productividad') }}";
+            const nuevaRuta = "{{ route('grupos.index_tablero') }}";
             // Cambia la ubicación de la página a la nueva ruta
             window.location.href = nuevaRuta;
         }

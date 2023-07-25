@@ -35,9 +35,8 @@ class PersonaController extends Controller
         $persona->tipo = $request->input('tipo');
 
         $grupo->personas()->save($persona);
-        $ban = 4;
 
-        return redirect()->route('grupos.show', $grupo)->with('success', 'Persona agregada exitosamente.')->with('ban', 4);
+        return redirect()->route('grupos.show', $grupo)->with('success', 'Persona agregada exitosamente.')->with('ban', 5);
     }
 
     /**

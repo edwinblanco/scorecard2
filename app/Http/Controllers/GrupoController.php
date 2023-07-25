@@ -24,6 +24,21 @@ class GrupoController extends Controller
         return view('grupos.index', compact('grupos', 'ban', 'grupo_am', 'grupo_pm', 'grupo_alma', 'grupo_fact', 'grupo_tras', 'grupo_tat', 'grupo_mon'));
     }
 
+    public function index_tablero()
+    {
+        $grupo_am = Grupo::where('tipo', 'horarioam')->first();
+        $grupo_pm = Grupo::where('tipo', 'horariopm')->first();
+        $grupo_alma = Grupo::where('tipo', 'almacenamiento')->first();
+        $grupo_fact = Grupo::where('tipo', 'facturacion')->first();
+        $grupo_tras = Grupo::where('tipo', 'trasporte')->first();
+        $grupo_tat = Grupo::where('tipo', 'tat')->first();
+        $grupo_mon = Grupo::where('tipo', 'monitoreo')->first();
+        $ban = 5;
+        return view('grupos.index_tablero', compact(
+            'ban', 'grupo_am', 'grupo_pm', 'grupo_alma', 'grupo_fact', 'grupo_tras', 'grupo_tat', 'grupo_mon'
+        ));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -68,7 +83,7 @@ class GrupoController extends Controller
     public function show(Grupo $grupo)
     {
         $personas = $grupo->personas;
-        $ban = 4;
+        $ban = 5;
         return view('grupos.show', compact('grupo', 'personas', 'ban'));
     }
 

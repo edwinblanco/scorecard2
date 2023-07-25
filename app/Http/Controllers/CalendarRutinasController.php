@@ -33,11 +33,13 @@ class CalendarRutinasController extends Controller
         $date = $request->input('date');
         $name = $request->input('name');
         $horario = $request->input('horario');
+        $pasillo = $request->input('pasillo');
 
         $evento = new CalendarRutinas();
         $evento->fecha = $date;
         $evento->nombre = $name;
         $evento->horario = $horario;
+        $evento->pasillo = $pasillo;
 
         $evento->save();
 

@@ -10,10 +10,10 @@
                 <img src="@if ($ban == 1)
                             {{ asset('banners/Banner Productividad.png') }}
                         @elseif ($ban == 2)
-                            {{ asset('banners/Aseo Baño.png') }}
+                            {{ asset('banners/bano.png') }}
                         @endif"
                     alt="Banner" class="img-fluid img-fluid-a w-100"
-                    style="height: 120px;">
+                    style="height: 100px;">
                 <!-- Texto dentro del banner -->
                 <!--<h1 class="banner-text">LISTA DE PRODUCTIVIDAD</h1>-->
             </div>
@@ -133,6 +133,6 @@
         });
     </script>
 
-    
+
 
 @stop

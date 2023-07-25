@@ -8,11 +8,9 @@
             <div class="col banner-container p-0">
                 <!-- Banner utilizando la clase "img-fluid" para hacer la imagen responsive y "w-100" para ocupar todo el ancho -->
                 <img src="@if ($ban == 1)
-                            {{ asset('banners/Banner Productividad.png') }}
-                        @elseif ($ban == 2)
-                            {{ asset('banners/Aseo Baño.png') }}
-                        @elseif ($ban == 3)
-                            {{ asset('banners/trenadmin.png') }}
+                            {{ asset('banners/produ.png') }}
+                        @elseif ($ban == 6)
+                            {{ asset('banners/nove.png') }}
                         @endif"
                     alt="Banner" class="img-fluid img-fluid-a w-100"
                     style="height: 100px;">
@@ -39,19 +37,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/trenadmin" method="POST">
+                        <form action="/novedad_admin/" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Población</label>
-                                <input type="text" class="form-control" id="pobla" name="pobla" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputcajas1" class="form-label">Frecuencia</label>
-                                <input type="text" class="form-control" id="frecu" name="frecu" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleuni1" class="form-label">Días de cargue</label>
-                                <input type="text" class="form-control" id="dias" name="dias" required>
+                                <label for="exampleInputEmail1" class="form-label">Novedad</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="novedad" name="novedad" required></textarea>
                             </div>
                             <button type="submit" class="btn button-custom">Guardar</button>
                         </form>
@@ -64,23 +54,21 @@
         <table id="productividad" class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded">
             <thead>
                 <tr>
-                    <th scope="col">Población</th>
-                    <th scope="col">Frecuencia</th>
-                    <th scope="col">Días de cargue</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Novedad</th>
                     <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($tren as $obj)
+                @foreach ($novedades as $obj)
                     <tr>
-                        <td scope="row">{{ $obj->poblacion }}</td>
-                        <td>{{ $obj->frecuencia}}</td>
-                        <td>{{ $obj->diasCargue }}</td>
+                        <td scope="row">{{ $obj->id }}</td>
+                        <td>{{ $obj->novedad }}</td>
                         <td>
-                            <form action="/trenadmin/{{ $obj->id }}" class="form-del" method="POST">
+                            <form action="/novedad_admin/{{ $obj->id }}" class="form-del" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a href="/trenadminedit/{{ $obj->id }}" class="btn button-custom">Editar</a>
+                                <a href="/novedad_admin/{{ $obj->id }}" class="btn button-custom m-1">Editar</a>
                                 <button type="submit" class="btn btn-danger mb-1">Eliminar</button>
                             </form>
                         </td>
@@ -102,6 +90,58 @@
 
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
+    <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .button-custom{
+            background-color: #021859;
+            color: white;
+        }
+
+        .button-custom:hover{
+            border: #021859 solid 1px;
+        }
+
+        .banner-container {
+            position: relative;
+
+            /* Permite posicionar elementos internos de forma absoluta */
+            text-align: center;
+            /* Centra el texto horizontalmente */
+        }
+
+        .banner-text {
+            position: absolute;
+            /* Permite posicionar el texto de forma absoluta dentro del contenedor */
+            bottom: 35%;
+            /* Distancia desde la parte inferior del contenedor */
+            left: 55%;
+            /* Centra el texto horizontalmente */
+            transform: translateX(-10%);
+            /* Centra el texto exactamente en el medio */
+            color: white;
+            /* Color del texto */
+            font-size: 40px;
+            /* Tamaño del texto */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            /* Sombra para mejorar la legibilidad del texto en la imagen */
+        }
+
+        #contain {
+            height: 400px;
+            overflow-y: scroll;
+        }
+
+        #table_scroll {
+            width: 100%;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+    </style>
 @stop
 
 @section('js')
@@ -159,3 +199,4 @@
         })
     </script>
 @stop
+

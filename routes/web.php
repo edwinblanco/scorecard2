@@ -2,7 +2,6 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 use App\Http\Controllers\ProductividadController;
 use App\Http\Controllers\Top3TATController;
 use App\Http\Controllers\Top3CAJASController;
@@ -11,6 +10,7 @@ use App\Http\Controllers\TrenDespachoController;
 use App\Http\Controllers\CalendarRutinasController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\NovedadesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,8 @@ Route::get('/', function () {
 
 Route::get('/productividad', 'App\Http\Controllers\ProductividadController@index_tablero')->name('productividad');
 
+Route::get('/novedades', 'App\Http\Controllers\NovedadesController@index_tablero')->name('novedades');
+
 Route::get('/trentablero', 'App\Http\Controllers\TrenDespachoController@index_tablero')->name('tren-tablero');
 
 Route::get('/top3tat', [Top3TATController::class, 'index_tablero'])->name('top3tat');
@@ -38,6 +40,8 @@ Route::get('/top3caj', [Top3CAJASController::class, 'index_tablero'])->name('top
 Route::get('/calendar_tablero', [CalendarAseoController::class, 'index_tablero'])->name('calendar.index_tablero');
 
 Route::get('/calendar-ruti_tablero', [CalendarRutinasController::class, 'index_tablero'])->name('calendar-ruti.index_tablero');
+
+Route::get('/grupos_tablero', [GrupoController::class, 'index_tablero'])->name('grupos.index_tablero');
 
 Route::get('/tablero', function () {
     return view('tablero');
@@ -49,6 +53,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/productividad_adm/{id}', 'App\Http\Controllers\ProductividadController@edit');
     Route::put('/productividad_adm/{id}', 'App\Http\Controllers\ProductividadController@update');
     Route::delete('/productividad_adm/{id}', 'App\Http\Controllers\ProductividadController@destroy');
+
+    Route::resource('novedad_admin/', NovedadesController::class)->names('admin.novedades');
+    Route::get('/novedad_admin/{id}', 'App\Http\Controllers\NovedadesController@edit');
+    Route::put('/novedad_admin/{id}', 'App\Http\Controllers\NovedadesController@update');
+    Route::delete('/novedad_admin/{id}', 'App\Http\Controllers\NovedadesController@destroy');
 
     Route::get('/top3tatadmin', [Top3TATController::class, 'index'])->name('top3tatadmin');
     Route::get('/top3tatadminedit/{id}', 'App\Http\Controllers\Top3TATController@edit');
@@ -91,13 +100,3 @@ Route::middleware([
         return redirect('productividad_admin/');
     })->name('admin.productividad');
 });
-
-/*Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});*/
