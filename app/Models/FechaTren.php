@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Novedades extends Model
+class FechaTren extends Model
 {
     use HasFactory;
-    protected $fillable = ['novedad'];
 }

@@ -51,6 +51,38 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- Modal para editar evento -->
+        <div class="modal" id="editEventModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar persona encargada</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario para actualizar el evento -->
+                        <form id="editEventForm" method="post" action="">
+                            @csrf
+                            @method('PUT')
+                            <label for="editEventTitle">Persona encargada:</label>
+                            <input type="text" id="editEventTitle" name="persona" class="form-control" placeholder="Título del evento" required>
+                            <label for="editEventDate">Fecha:</label>
+                            <input type="date" id="editEventDate" name="fecha" class="form-control" required>
+                            <!-- Campo oculto para almacenar el ID del evento -->
+                            <input type="hidden" id="editEventId" name="event_id" value="">
+                            <button type="submit" class="btn button-custom my-2">Actualizar</button>
+                            <a id="eliminarEvento" href="" class="btn btn-danger my-2">Eliminar</a>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @stop
 
@@ -83,6 +115,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let calendarEl = document.getElementById('calendar');
@@ -95,10 +129,6 @@
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
                 selectable: true,
-                dateClick: function (info) {
-                    document.getElementById('eventDate').value = info.dateStr;
-                    document.getElementById('eventForm').style.display = 'block';
-                },
                 eventContent: function (arg) {
                     return {
                         html: `<div style="font-size: 20px;">${arg.event.title}</div>`,
@@ -111,12 +141,42 @@
                     let eventModal = new bootstrap.Modal(document.getElementById('eventModal'));
                     eventModal.show();
                 },
+                eventClick: function(info) {
+                    // Obtener la información del evento seleccionado
+                    let eventId = info.event.id;
+                    let eventTitle = info.event.title;
+                    let eventDate = info.event.start;
+
+                    console.log(eventDate);
+
+                    // Formatear la fecha del evento en el formato 'YYYY-MM-DD'
+                    let formattedDate = eventDate.toISOString().slice(0, 10);
+
+                    console.log(formattedDate);
+
+                    // Rellenar el formulario con la información del evento
+                    document.getElementById('editEventTitle').value = eventTitle;
+                    document.getElementById('editEventId').value = eventId;
+                    document.getElementById('editEventDate').value = formattedDate;
+
+                    // Actualizar el atributo 'action' del formulario con la URL para actualizar el evento
+                    let form = document.getElementById('editEventForm');
+                    form.action = '/actualizar_evento/' + eventId;
+
+                    let eliminar = document.getElementById('eliminarEvento');
+                    eliminar.href = '/eliminar_evento/'+eventId;
+
+                    // Mostrar el modal para editar el evento
+                    let editEventModal = new bootstrap.Modal(document.getElementById('editEventModal'));
+                    editEventModal.show();
+                },
             });
 
             // Eventos desde el controlador
             const eventsFromController = [
                 @foreach ($events as $event)
                 {
+                    id: '{{ $event->id }}',
                     title: '{{ $event->nombre }}',
                     start: '{{ $event->fecha }}',
                     display: 'block', // Hacer que el evento ocupe más espacio vertical
@@ -133,6 +193,34 @@
         });
     </script>
 
+    @if (session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '!Registro eliminado!',
+                '!Registro eliminado con exito!',
+                'success'
+            )
+        </script>
+    @endif
+    <script>
+        $('.form-del').submit(function(e) {
+            e.preventDefault();
 
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡El registro se eliminará definitivamente!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Si, eliminar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        })
+    </script>
 
 @stop

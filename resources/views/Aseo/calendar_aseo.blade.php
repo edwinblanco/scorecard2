@@ -92,6 +92,10 @@
                     document.getElementById('eventDate').value = info.dateStr;
                     document.getElementById('eventForm').style.display = 'block';
                 },
+                eventClick: function(info) {
+                    // Mostrar una alerta al hacer clic en un evento
+                    alert('Clic en el evento: ' + info.event.title);
+                },
             });
 
             calendar.render();

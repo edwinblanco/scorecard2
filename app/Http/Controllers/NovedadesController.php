@@ -37,10 +37,9 @@ class NovedadesController extends Controller
      */
     public function store(Request $request)
     {
-        $novedad = new Novedades();
-        $novedad->novedad = $request->novedad;
-
-        $novedad->save();
+        Novedades::create([
+            'novedad' => $request->input('novedad'),
+        ]);
         return redirect('novedad_admin/');
     }
 

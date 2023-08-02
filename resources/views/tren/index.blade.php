@@ -26,7 +26,7 @@
 @section('content')
     <div class="container">
         <!-- Button trigger modal -->
-        <button type="button" class="btn button-custom m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn button-custom my-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Agregar nuevo registro
         </button>
 
@@ -61,6 +61,16 @@
             </div>
         </div>
 
+        <h3>Fecha actual: {{$fecha->fecha}}</h3>
+        <form action="/trenadmin_fecha/{{$fecha->id}}" method="POST" class="mb-1">
+            @csrf
+            @method('PUT')
+            <div class="mb-3">
+                <input type="date" class="form-control" id="fecha" name="fecha" required>
+            </div>
+            <button type="submit" class="btn button-custom">Actualizar feccha</button>
+        </form>
+
         <table id="productividad" class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded">
             <thead>
                 <tr>
@@ -82,6 +92,11 @@
                                 @method('DELETE')
                                 <a href="/trenadminedit/{{ $obj->id }}" class="btn button-custom">Editar</a>
                                 <button type="submit" class="btn btn-danger mb-1">Eliminar</button>
+                                @if ($obj->mostrar)
+                                    <a href="/trenadmineditmostrar/{{ $obj->id }}/0" class="btn btn-info">No mostrar</a>
+                                @else
+                                    <a href="/trenadmineditmostrar/{{ $obj->id }}/1" class="btn btn-warning">Mostrar</a>
+                                @endif
                             </form>
                         </td>
                     </tr>

@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container mt-5">
-
         <div id="carouselExampleInterval" class="carousel slide shadow-lg p-3 mb-5 bg-body rounded" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="8000">
+                    @if ($grupo_alma)
                     <h3 class="m-1">Grupo "{{ $grupo_alma->nombre }}"</h3>
                     <div class="row">
                         <div class="col">
@@ -69,8 +69,12 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <h3>Grupo "Almacenamiento" no creado</h3>
+                    @endif
                 </div>
                 <div class="carousel-item" data-bs-interval="8000">
+                    @if ($grupo_fact)
                     <h3 class="m-1">Grupo "{{ $grupo_fact->nombre }}"</h3>
                     <div class="row">
                         <div class="col">
@@ -122,8 +126,12 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <h3>Grupo "Facturación" no creado"</h3>
+                    @endif
                 </div>
                 <div class="carousel-item" data-bs-interval="8000">
+                    @if ($grupo_tras)
                     <h3 class="m-1">Grupo "{{ $grupo_tras->nombre }}"</h3>
                     <div class="row">
                         <div class="col">
@@ -187,8 +195,12 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <h3>Grupo "Trasporte" no creado</h3>
+                    @endif
                 </div>
                 <div class="carousel-item" data-bs-interval="8000">
+                    @if ($grupo_tat)
                     <h3 class="m-1">Grupo "{{ $grupo_tat->nombre }}"</h3>
                     <div class="row">
                         <div class="col">
@@ -216,8 +228,12 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <h3>Grupo "TAT" no creado</h3>
+                    @endif
                 </div>
                 <div class="carousel-item" data-bs-interval="8000">
+                    @if ($grupo_mon)
                     <h3 class="m-1">Grupo "{{ $grupo_mon->nombre }}"</h3>
                     <div class="row">
                         <div class="col">
@@ -233,8 +249,12 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <h3>Grupo "Monitoreo" no creado"</h3>
+                    @endif
                 </div>
                 <div class="carousel-item" data-bs-interval="8000">
+                    @if ($grupo_am)
                     <h3 class="m-1">Grupo "{{ $grupo_am->nombre }}"</h3>
                     <div class="row">
                         <div class="col">
@@ -336,8 +356,12 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <h3>Grupo "AM" no creado</h3>
+                    @endif
                 </div>
                 <div class="carousel-item" data-bs-interval="8000">
+                    @if ($grupo_pm)
                     <h3 class="m-1">Grupo "{{ $grupo_pm->nombre }}"</h3>
                     <div class="row">
                         <div class="col">
@@ -428,6 +452,9 @@
                         </div>
 
                     </div>
+                    @else
+                    <h3>Grupo "PM" no creado</h3>
+                    @endif
                 </div>
 
             </div>
@@ -442,7 +469,6 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
     </div>
 
     <!-- Script de jQuery para el desplazamiento automático -->

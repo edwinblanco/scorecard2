@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Productividad;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ProductividadController extends Controller
 {
@@ -22,6 +23,41 @@ class ProductividadController extends Controller
         $lista_productividad = Productividad::all();
         $ban = 1;
         return view('productividad.lista_productividad', compact('lista_productividad', 'ban'));
+    }
+
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'excel_file' => 'required|mimes:xlsx', // Asegúrate de validar el tipo de archivo correctamente
+        ]);
+
+        $file = $request->file('excel_file');
+
+        // Procesar el archivo Excel
+        try {
+
+            Productividad::truncate();
+
+            $spreadsheet = IOFactory::load($file);
+            $worksheet = $spreadsheet->getActiveSheet();
+            $rows = $worksheet->toArray();
+            array_shift($rows); // Eliminar la primera fila si es el encabezado
+
+            // Guardar los registros en la base de datos
+            foreach ($rows as $row) {
+                $productividad = new Productividad();
+                $productividad->auxiliar = $row[0];
+                $productividad->cajas = $row[1];
+                $productividad->unidades = $row[2];
+                $productividad->save();
+            }
+
+            return redirect('productividad_admin/')->with('success', 'Registros importados correctamente.');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return redirect('productividad_admin/')->with('error', 'Error al procesar el archivo. Asegúrate de que el archivo Excel sea válido.');
+        }
     }
 
     /**

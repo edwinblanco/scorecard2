@@ -3,6 +3,7 @@
 @section('title', 'DPJD')
 
 @section('content_header')
+
     <div class="container-fluid mx-0 my-0 mb-2 p-0">
         <div class="row m-0 p-0">
             <div class="col banner-container p-0">
@@ -37,7 +38,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/productividad_admin/" method="POST">
+                        <form action="/productividad_adm" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Auxiliar</label>
@@ -59,6 +60,61 @@
             </div>
         </div>
 
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            Cargar archivo .xlsx <i class="bi bi-filetype-xlsx"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Archivo .xlsx</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-1">Al cargar el archivo Excel se eliminaran los registros anteriores y se cargarán los nuevos registros.</p>
+                    <form action="{{ route('productividad.import') }}" method="post" enctype="multipart/form-data" class="row g-3">
+                        @csrf
+
+                        <div class="col-auto">
+                            <label for="excel_file" class="visually-hidden">Archivo Excel</label>
+                            <input type="file" name="excel_file" id="excel_file" class="form-control">
+                        </div>
+
+                        <div class="col-auto">
+                            <button type="submit" class="btn button-custom">Cargar Excel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Mostrar errores de validación -->
+        @if($errors->any())
+            <div class="alert alert-danger auto-dismiss">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if(session('success'))
+        <div class="alert alert-success auto-dismiss">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger auto-dismiss">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <table id="productividad" class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded">
             <thead>
                 <tr>
@@ -78,7 +134,7 @@
                             <form action="/productividad_adm/{{ $obj->id }}" class="form-del" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a href="/productividad_adm/{{ $obj->id }}" class="btn button-custom">Editar</a>
+                                <a href="/productividad_adm/{{ $obj->id }}" class="btn button-custom a-del">Editar</a>
                                 <button type="submit" class="btn btn-danger mb-1">Eliminar</button>
                             </form>
                         </td>
@@ -95,6 +151,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css”/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
 
@@ -187,8 +246,8 @@
             )
         </script>
     @endif
-    <script>
-        $('.form-del').submit(function(e) {
+    <!--<script>
+        $('.a-del').click(function(e) {
             e.preventDefault();
 
             Swal.fire({
@@ -207,6 +266,18 @@
             })
 
         })
+    </script>-->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const autoDismissAlerts = document.querySelectorAll('.auto-dismiss');
+
+            autoDismissAlerts.forEach(alert => {
+                setTimeout(function() {
+                    alert.style.display = 'none';
+                }, 5000); // 5000 milisegundos = 5 segundos, puedes ajustar este valor a tu preferencia
+            });
+        });
     </script>
 @stop
 

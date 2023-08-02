@@ -76,16 +76,31 @@ class CalendarAseoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CalendarAseo $calendarAseo)
+    public function update(Request $request, $id)
     {
-        //
+
+        $persona = $request->persona;
+        $fecha = $request->fecha;
+
+        $calendarAseo = CalendarAseo::find($id);
+
+        $calendarAseo->nombre = $persona;
+        $calendarAseo->fecha = $fecha;
+        $calendarAseo->save();
+
+        return redirect()->route('calendar.index')->with('success', 'Evento actualizado correctamente.');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CalendarAseo $calendarAseo)
+    public function destroy($id)
     {
-        //
+        $calendarAseo = CalendarAseo::find($id);
+        $calendarAseo->delete();
+
+        return redirect()->route('calendar.index')->with('success', 'Evento eliminado correctamente.');
+
     }
 }

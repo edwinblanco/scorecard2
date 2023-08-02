@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TrenDespacho;
+use App\Models\FechaTren;
 use Illuminate\Http\Request;
 
 class TrenDespachoController extends Controller
@@ -13,15 +14,17 @@ class TrenDespachoController extends Controller
     public function index()
     {
         $tren = TrenDespacho::all();
+        $fecha = FechaTren::all()->first();
         $ban = 3;
-        return view('tren.index', compact('tren', 'ban'));
+        return view('tren.index', compact('tren', 'ban', 'fecha'));
     }
 
     public function index_tablero()
     {
         $tren = TrenDespacho::all();
+        $fecha = FechaTren::all()->first();
         $ban = 3;
-        return view('tren.index_tablero', compact('tren', 'ban'));
+        return view('tren.index_tablero', compact('tren', 'ban', 'fecha'));
     }
 
     /**
@@ -62,6 +65,19 @@ class TrenDespachoController extends Controller
         $tren = TrenDespacho::find($id);
         $ban = 3;
         return view('tren.editar_tren', compact('tren', 'ban'));
+    }
+
+    public function editmostrar($id, $mos)
+    {
+        $tren = TrenDespacho::find($id);
+        if($mos == "1"){
+            $tren->mostrar = true;
+        }else{
+            $tren->mostrar = false;
+        }
+        $tren->save();
+
+        return redirect('/trendmin');
     }
 
     /**

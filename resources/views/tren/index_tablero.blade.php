@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <h2 class="m-2 text-center">Fecha: {{$fecha->fecha}}</h2>
         <table class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
             <thead>
                 <tr>
@@ -15,11 +16,13 @@
             <table border="0" id="table_scroll" class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
                 <tbody>
                     @foreach ($tren as $obj)
+                        @if ($obj->mostrar)
                         <tr>
                             <td scope="row">{{ $obj->poblacion }}</td>
                             <td>{{ $obj->frecuencia}}</td>
                             <td>{{ $obj->diasCargue }}</td>
                         </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>

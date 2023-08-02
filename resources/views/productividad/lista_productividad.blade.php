@@ -5,6 +5,7 @@
         <table class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
             <thead>
                 <tr>
+                    <th scope="col" class="auxiliar">Ranking</th>
                     <th scope="col" class="auxiliar">Auxiliar</th>
                     <th scope="col" class="cajas">Cajas</th>
                     <th scope="col" class="unidades">Unidades</th>
@@ -14,9 +15,10 @@
         <div id="contain">
             <table border="0" id="table_scroll" class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
                 <tbody>
-                    @foreach ($lista_productividad as $obj)
+                    @foreach ($lista_productividad as $index => $obj)
                         <tr>
-                            <td scope="row">{{ $obj->auxiliar }}</td>
+                            <td scope="row">{{ $index + 1 }}</td>
+                            <td>{{ $obj->auxiliar }}</td>
                             <td>{{ $obj->cajas }}</td>
                             <td>{{ $obj->unidades }}</td>
                         </tr>

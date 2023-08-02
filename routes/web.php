@@ -11,6 +11,7 @@ use App\Http\Controllers\CalendarRutinasController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\NovedadesController;
+use App\Http\Controllers\FechaTrenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,11 +52,14 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('productividad_admin/', ProductividadController::class)->names('admin.productividad');
     Route::get('/productividad_adm/{id}', 'App\Http\Controllers\ProductividadController@edit');
+    Route::post('/productividad_adm', 'App\Http\Controllers\ProductividadController@store');
     Route::put('/productividad_adm/{id}', 'App\Http\Controllers\ProductividadController@update');
     Route::delete('/productividad_adm/{id}', 'App\Http\Controllers\ProductividadController@destroy');
+    Route::post('/productividad_admin/import', 'App\Http\Controllers\ProductividadController@import')->name('productividad.import');
 
-    Route::resource('novedad_admin/', NovedadesController::class)->names('admin.novedades');
+    Route::get('novedad_admin/', [NovedadesController::class, 'index'])->name('admin.novedades');
     Route::get('/novedad_admin/{id}', 'App\Http\Controllers\NovedadesController@edit');
+    Route::post('/novedad_admin', 'App\Http\Controllers\NovedadesController@store');
     Route::put('/novedad_admin/{id}', 'App\Http\Controllers\NovedadesController@update');
     Route::delete('/novedad_admin/{id}', 'App\Http\Controllers\NovedadesController@destroy');
 
@@ -74,10 +78,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/trenadmin', 'App\Http\Controllers\TrenDespachoController@store');
     Route::put('/trenadmin/{id}', 'App\Http\Controllers\TrenDespachoController@update');
     Route::delete('/trenadmin/{id}', 'App\Http\Controllers\TrenDespachoController@destroy');
+    Route::get('/trenadmineditmostrar/{id}/{mos}', 'App\Http\Controllers\TrenDespachoController@editmostrar');
+
+    Route::put('/trenadmin_fecha/{id}', 'App\Http\Controllers\FechaTrenController@update');
 
     Route::get('/calendar', [CalendarAseoController::class, 'index'])->name('calendar.index');
     Route::get('/calendar/show/{id}', [CalendarAseoController::class, 'show'])->name('calendar.show');
     Route::post('/calendar/create', [CalendarAseoController::class, 'create'])->name('calendar.create');
+    Route::put('/actualizar_evento/{id}', [CalendarAseoController::class, 'update'])->name('evento.update');
+    Route::get('/eliminar_evento/{id}', [CalendarAseoController::class, 'destroy'])->name('evento.destroy');
 
     Route::get('/calendar_ruti', [CalendarRutinasController::class, 'index'])->name('calendar-ruti.index');
     Route::get('/calendar_ruti/show/{id}', [CalendarRutinasController::class, 'show'])->name('calendar-ruti.show');

@@ -64,6 +64,8 @@
             margin-top: 100px;
             margin-bottom: 100px;
         }
+
+
     </style>
 
 </head>
@@ -75,7 +77,7 @@
             <div class="col banner-container p-0">
                 <!-- Banner utilizando la clase "img-fluid" para hacer la imagen responsive y "w-100" para ocupar todo el ancho -->
                 <img src="@if ($ban == 1)
-                            {{ asset('banners/Banner Productividad.png') }}
+                            {{ asset('banners/banerpodu.png') }}
                         @elseif ($ban == 2)
                             {{ asset('banners/Aseo Baño.png') }}
                         @elseif ($ban == 3)
