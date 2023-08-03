@@ -4,26 +4,24 @@
     <div class="container">
         <h1 class="my-2 text-center">TOP 3 TAT</h1>
 
-            <table class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Auxiliar</th>
-                        <th scope="col">Cajas</th>
-                        <th scope="col">Unidades</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($lista_productividad as $index => $obj)
-                        <tr>
-                            <td scope="row">{{ $obj->top }}</td>
-                            <td>{{ $obj->auxiliar }}</td>
-                            <td>{{ $obj->cajas }}</td>
-                            <td>{{ $obj->unidades }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="row">
+
+            @foreach ($lista_productividad as $index => $obj)
+
+            <div class="col">
+                <div class="card shadow p-3 mb-5 bg-body rounded mx-auto" style="width: 18rem;">
+                    <img src="{{ asset($obj->imagen_url) }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><b>{{ $obj->top }}</b> - {{ $obj->auxiliar }}</h5>
+                        <p class="card-text"><b>Cajas: </b>{{ $obj->cajas }}</p>
+                        <p class="card-text"><b>Unidades: </b>{{ $obj->unidades }}</p>
+                    </div>
+                </div>
+            </div>
+
+            @endforeach
+
+        </div>
 
     </div>
 

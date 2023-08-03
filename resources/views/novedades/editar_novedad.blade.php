@@ -24,13 +24,17 @@
 @section('content')
     <div class="container">
         <h1 class="text-center m-2">Editar registro</h1>
-        <form action="/novedad_admin/{{$nove->id}}" method="POST" class="shadow p-3 mb-5 bg-body rounded">
+        <form action="/novedad_admin/{{$nove->id}}" method="POST" class="shadow p-3 mb-5 bg-body rounded" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Novedad</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="novedad" name="novedad" required>{{$nove->novedad}}</textarea>
             </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input class="form-control" type="file" id="imagen" name="imagen">
+              </div>
             <button type="submit" class="btn button-custom">Editar</button>
         </form>
     </div>

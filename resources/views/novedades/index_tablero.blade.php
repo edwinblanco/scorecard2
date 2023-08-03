@@ -1,24 +1,33 @@
 @extends('layouts.base')
 
 @section('content')
+
+    <style>
+        .carousel-item img {
+            object-fit: contain; /* La imagen se ajustará dentro del contenedor manteniendo su relación de aspecto */
+            height: 100vh; /* Establece la altura de la imagen para que ocupe todo el alto de la pantalla */
+            width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+            display: block; /* Elimina espacios adicionales alrededor de la imagen */
+            margin: 0 auto; /* Centra la imagen horizontalmente */
+        }
+    </style>
     <div class="container">
-        <table class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
-            <thead>
-                <tr>
-                    <th scope="col" class="auxiliar">Novedad</th>
-                </tr>
-            </thead>
-        </table>
-        <div id="contain">
-            <table border="0" id="table_scroll" class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded mt-2">
-                <tbody>
-                    @foreach ($novedades as $obj)
-                        <tr>
-                            <td scope="row">{{ $obj->novedad }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                @foreach ($novedades as $key => $obj)
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="10000">
+                        <h6 class="text-center m-2">{{$obj->novedad}}</h6>
+                        @if ($obj->imagen_url)
+                            <img class="img-fluid" src="{{ asset($obj->imagen_url) }}" alt="Imagen de la novedad" style="height: 400px">
+                        @endif
+                    </div>
+                @endforeach
+
+            </div>
+          </div>
+
         </div>
     </div>
 
@@ -33,7 +42,7 @@
         }
 
         // Intervalo de tiempo en milisegundos para cambiar la ruta (ejemplo: 5 segundos)
-        const intervaloTiempo = 30000; // 5000 milisegundos = 5 segundos
+        const intervaloTiempo = 60000; // 5000 milisegundos = 5 segundos
 
         // Iniciar el intervalo para cambiar la ruta automáticamente
         setInterval(recargarConNuevaRuta, intervaloTiempo);

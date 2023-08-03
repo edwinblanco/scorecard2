@@ -81,6 +81,16 @@ class Top3TATController extends Controller
         $top->unidades = $request->unidades;
         $top->top = $request->top;
 
+        $request->validate([
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('imagen')) {
+            $imageName = 'TAT-'.time() . '.' . $request->imagen->extension();
+            $request->imagen->move(public_path('images'), $imageName);
+            $top->imagen_url = '/images/' . $imageName;
+        }
+
         $top->save();
 
         return redirect('top3tatadmin');

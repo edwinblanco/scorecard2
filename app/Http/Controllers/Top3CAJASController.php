@@ -80,6 +80,16 @@ class Top3CAJASController extends Controller
         $top->unidades = $request->unidades;
         $top->top = $request->top;
 
+        $request->validate([
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('imagen')) {
+            $imageName = 'CAJAS-'.time() . '.' . $request->imagen->extension();
+            $request->imagen->move(public_path('images'), $imageName);
+            $top->imagen_url = '/images/' . $imageName;
+        }
+
         $top->save();
 
         return redirect('top3cajadmin');

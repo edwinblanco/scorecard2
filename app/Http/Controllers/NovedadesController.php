@@ -37,9 +37,23 @@ class NovedadesController extends Controller
      */
     public function store(Request $request)
     {
-        Novedades::create([
-            'novedad' => $request->input('novedad'),
+
+        $request->validate([
+            'novedad' => 'required',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        $novedad = new Novedades();
+        $novedad->novedad = $request->novedad;
+
+        if ($request->hasFile('imagen')) {
+            $imageName = 'NV-'.time() . '.' . $request->imagen->extension();
+            $request->imagen->move(public_path('images'), $imageName);
+            $novedad->imagen_url = '/images/' . $imageName;
+        }
+
+        $novedad->save();
+
         return redirect('novedad_admin/');
     }
 
@@ -68,6 +82,17 @@ class NovedadesController extends Controller
     {
         $novedad = Novedades::find($id);
         $novedad->novedad = $request->novedad;
+
+        $request->validate([
+            'novedad' => 'required',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('imagen')) {
+            $imageName = 'NV-'.time() . '.' . $request->imagen->extension();
+            $request->imagen->move(public_path('images'), $imageName);
+            $novedad->imagen_url = '/images/' . $imageName;
+        }
 
         $novedad->save();
         return redirect('novedad_admin/');

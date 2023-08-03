@@ -37,12 +37,16 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/novedad_admin" method="POST">
+                        <form action="/novedad_admin" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Novedad</label>
+                                <label for="exampleInputEmail1" class="form-label">Novedad:</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="novedad" name="novedad" required></textarea>
                             </div>
+                            <div class="mb-3">
+                                <label for="imagen" class="form-label">Imagen</label>
+                                <input class="form-control" type="file" id="imagen" name="imagen">
+                              </div>
                             <button type="submit" class="btn button-custom">Guardar</button>
                         </form>
                     </div>
