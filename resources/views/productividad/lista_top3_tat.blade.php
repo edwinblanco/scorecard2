@@ -10,7 +10,11 @@
 
             <div class="col">
                 <div class="card shadow p-3 mb-5 bg-body rounded mx-auto" style="width: 18rem;">
-                    <img src="{{ asset($obj->imagen_url) }}" class="card-img-top" alt="...">
+                    @if ($obj->imagen_url && file_exists(public_path($obj->imagen_url)))
+                        <img src="{{ asset($obj->imagen_url) }}" class="card-img-top imagen-personalizada-top" alt="...">
+                    @else
+                        <img src="{{ asset('images/sinfoto.jpg') }}" class="card-img-top imagen-personalizada-top" alt="Imagen por defecto">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title text-center"><b>{{ $obj->top }}</b> - {{ $obj->auxiliar }}</h5>
                         <p class="card-text"><b>Cajas: </b>{{ $obj->cajas }}</p>
@@ -58,7 +62,7 @@
         }
 
         // Intervalo de tiempo en milisegundos para cambiar la ruta (ejemplo: 5 segundos)
-        const intervaloTiempo = 30000; // 5000 milisegundos = 5 segundos
+        const intervaloTiempo = 60000; // 5000 milisegundos = 5 segundos
 
         // Iniciar el intervalo para cambiar la ruta automáticamente
         setInterval(recargarConNuevaRuta, intervaloTiempo);

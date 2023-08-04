@@ -24,7 +24,34 @@
 @stop
 
 @section('content')
+
     <div class="container">
+
+        <h2 class="m-1">Horarios</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Mes</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Acción</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($events as $event)
+            <tr>
+                <td>{{$event->fecha}}</td>
+                <td><a href="{{$event->imagen_url}}" target="_blank">Ver imagen</a></td>
+                <td>{{$event->horario}}</td>
+                <td><a href="/rutinasedit/{{$event->id}}" class="btn button-custom">Editar</a></td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+
+
+    {{--<div class="container">
 
         <h2 class="m-1">Horario mañana</h2>
         <div id="calendar"></div>
@@ -69,7 +96,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->--}}
 @stop
 
 @section('css')
@@ -81,7 +108,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
 
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-
 
 @stop
 
@@ -102,8 +128,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.min.js"></script>
 
-    <script>
-
+    {{--<script>
     function obtenerColor(horario) {
             // Definimos una lógica condicional para asignar colores según 'am' o 'pm'
             if (horario === 'am') {
@@ -173,7 +198,6 @@
             calendar.render();
         });
     </script>
-
 
     <script>
 
@@ -245,7 +269,6 @@
 
             calendar.render();
         });
-    </script>
-
+    </script>--}}
 
 @stop

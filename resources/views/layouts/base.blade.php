@@ -65,6 +65,13 @@
             margin-bottom: 100px;
         }
 
+        .imagen-personalizada-top {
+            height: 250px;
+            width: auto; /* Esto mantendrá la proporción original */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
     </style>
 
 </head>
@@ -76,17 +83,17 @@
             <div class="col banner-container p-0">
                 <!-- Banner utilizando la clase "img-fluid" para hacer la imagen responsive y "w-100" para ocupar todo el ancho -->
                 <img src="@if ($ban == 1)
-                            {{ asset('banners/banerpodu.png') }}
+                            {{ asset('banners/t_produ2.png') }}
                         @elseif ($ban == 2)
-                            {{ asset('banners/Aseo Baño.png') }}
+                            {{ asset('banners/t_aseo.png') }}
                         @elseif ($ban == 3)
-                            {{ asset('banners/tren.png') }}
+                            {{ asset('banners/t_tren.png') }}
                         @elseif ($ban == 4)
-                            {{ asset('banners/rutitab.png') }}
+                            {{ asset('banners/t_ruti.png') }}
                         @elseif ($ban == 5)
-                        {{ asset('banners/personas.png') }}
+                        {{ asset('banners/t_personal.png') }}
                         @elseif ($ban == 6)
-                        {{ asset('banners/novetab.png') }}
+                        {{ asset('banners/t_nove.png') }}
                         @endif"
                     alt="Banner" class="img-fluid img-fluid-a w-100"
                     style="height: 140px;">
@@ -95,7 +102,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

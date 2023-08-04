@@ -8,7 +8,7 @@
             <div class="col banner-container p-0">
                 <!-- Banner utilizando la clase "img-fluid" para hacer la imagen responsive y "w-100" para ocupar todo el ancho -->
                 <img src="@if ($ban == 1)
-                            {{ asset('banners/Banner Productividad.png') }}
+                            {{ asset('banners/produ.png') }}
                         @elseif ($ban == 2)
                             {{ asset('banners/Aseo Baño.png') }}
                         @endif"
@@ -22,25 +22,47 @@
 @stop
 
 @section('content')
-   <div class="container">
-        <h1>Calendario</h1>
+    <div class="container">
 
-        <div id="calendar_ruti"></div>
+        @if ($top3 <3)
+            <a href="/top3uniadmingen/" class="btn button-custom m-1">
+                Generar top
+            </a>
+        @endif
 
-        <div id="eventForm" style="display: none;">
-            <h2>Asignar persona a día</h2>
-            <form action="{{ route('calendar.create') }}" method="post">
-                @csrf
-                <label for="date">Fecha:</label>
-                <input type="date" name="date" id="eventDate" required>
+        <h1 class="my-2 text-center">TOP 3 UNIDADES</h1>
 
-                <label for="name">Nombre:</label>
-                <input type="text" name="name" required>
+        <table id="productividad" class="table table-striped table-bordered shadow-lg p-2 mb-2 bg-body rounded">
+            <thead>
+                <tr>
+                    <th scope="col">Top</th>
+                    <th scope="col">Auxiliar</th>
+                    <th scope="col">Cajas</th>
+                    <th scope="col">Unidades</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($lista_productividad as $index => $obj)
+                    <tr>
+                        <td scope="row">{{ $obj->top  }}</td>
+                        <td>{{ $obj->auxiliar }}</td>
+                        <td>{{ $obj->cajas }}</td>
+                        <td>{{ $obj->unidades }}</td>
+                        <td>
+                            <form action="/top3uniadmin/{{ $obj->id }}" class="form-del" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <a href="/top3uniadminedit/{{ $obj->id }}" class="btn button-custom">Editar</a>
+                                <!--<button type="submit" class="btn btn-danger mb-1">Eliminar</button>-->
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
 
-                <button type="submit">Guardar</button>
-            </form>
-        </div>
-   </div>
+            </tbody>
+        </table>
+    </div>
 @stop
 
 @section('css')
@@ -64,7 +86,6 @@
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 
     <script src="//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function() {
@@ -77,24 +98,6 @@
                     [5, 10, 100, "Todos"]
                 ]
             });
-        });
-    </script>
-
-    <<script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let calendarEl = document.getElementById('calendar_ruti');
-
-            let calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                selectable: true,
-                events: {!! json_encode($events) !!},
-                dateClick: function (info) {
-                    document.getElementById('eventDate').value = info.dateStr;
-                    document.getElementById('eventForm').style.display = 'block';
-                },
-            });
-
-            calendar.render();
         });
     </script>
 

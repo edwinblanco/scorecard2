@@ -115,7 +115,7 @@
         }
 
         // Intervalo de tiempo en milisegundos para cambiar la ruta (ejemplo: 5 segundos)
-        const intervaloTiempo = 30000; // 5000 milisegundos = 5 segundos
+        const intervaloTiempo = 120000; // 5000 milisegundos = 5 segundos
 
         // Iniciar el intervalo para cambiar la ruta automáticamente
         setInterval(recargarConNuevaRuta, intervaloTiempo);

@@ -18,7 +18,12 @@
 
                 @foreach ($novedades as $key => $obj)
                     <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="10000">
-                        <h6 class="text-center m-2">{{$obj->novedad}}</h6>
+
+                        @if (!$obj->imagen_url)
+                        <h6 class="text-center m-2" style="font-size: 30px;">{{$obj->novedad}}</h6>
+                        @else
+                            <h6 class="text-center m-2">{{$obj->novedad}}</h6>
+                        @endif
                         @if ($obj->imagen_url)
                             <img class="img-fluid" src="{{ asset($obj->imagen_url) }}" alt="Imagen de la novedad" style="height: 400px">
                         @endif
@@ -42,7 +47,7 @@
         }
 
         // Intervalo de tiempo en milisegundos para cambiar la ruta (ejemplo: 5 segundos)
-        const intervaloTiempo = 60000; // 5000 milisegundos = 5 segundos
+        const intervaloTiempo = 120000; // 5000 milisegundos = 5 segundos
 
         // Iniciar el intervalo para cambiar la ruta automáticamente
         setInterval(recargarConNuevaRuta, intervaloTiempo);

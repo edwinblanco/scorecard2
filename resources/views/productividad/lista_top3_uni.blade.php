@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <h1 class="my-2 text-center">TOP 3 CAJAS</h1>
+        <h1 class="my-2 text-center">TOP 3 UNIDADES</h1>
 
         <div class="row">
 
@@ -56,7 +56,7 @@
         // Función para recargar la página con una nueva ruta
         function recargarConNuevaRuta() {
             // Obtén una ruta aleatoria del arreglo
-            const nuevaRuta = "{{ route('top3uni') }}";
+            const nuevaRuta = "{{ route('tren-tablero') }}";
             // Cambia la ubicación de la página a la nueva ruta
             window.location.href = nuevaRuta;
         }

@@ -2,8 +2,33 @@
 
 @section('content')
 
+    <div class="continer-fluid">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                @foreach ($events as $key => $obj)
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="10000">
+                        <img src="{{$obj->imagen_url}}" class="d-block w-100" alt="...">
+                    </div>
+                @endforeach
+
+              <div class="carousel-item active" data-bs-interval="10000">
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+
+
     {{-- Contenido --}}
-    <div class="container-fluid">
+    {{--<div class="container-fluid">
 
         @php
             use Carbon\Carbon;
@@ -108,7 +133,7 @@
             </button>
           </div>
 
-    </div>
+    </div>--}}
 
     <!-- Script de jQuery para el desplazamiento automático -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -135,7 +160,7 @@
         }
 
         // Intervalo de tiempo en milisegundos para cambiar la ruta (ejemplo: 5 segundos)
-        const intervaloTiempo = 60000; // 5000 milisegundos = 5 segundos
+        const intervaloTiempo = 90000; // 5000 milisegundos = 5 segundos
 
         // Iniciar el intervalo para cambiar la ruta automáticamente
         setInterval(recargarConNuevaRuta, intervaloTiempo);
