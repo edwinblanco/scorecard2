@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="continer-fluid">
+    {{--<div class="continer-fluid">
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
 
@@ -24,11 +24,10 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-    </div>
-
+    </div>--}}
 
     {{-- Contenido --}}
-    {{--<div class="container-fluid">
+    <div class="container-fluid">
 
         @php
             use Carbon\Carbon;
@@ -133,7 +132,7 @@
             </button>
           </div>
 
-    </div>--}}
+    </div>
 
     <!-- Script de jQuery para el desplazamiento automático -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

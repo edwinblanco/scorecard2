@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\CalendarRutinas;
-use App\Models\Rutinas;
 use Illuminate\Http\Request;
 
 class CalendarRutinasController extends Controller
@@ -13,16 +12,16 @@ class CalendarRutinasController extends Controller
      */
     public function index()
     {
-        //$events = CalendarRutinas::all();
-        $events = Rutinas::all();
+        $events = CalendarRutinas::all();
+        //$events = Rutinas::all();
         $ban = 4;
 
         return view('rutinas.index', compact('events', 'ban'));
     }
     public function index_tablero()
     {
-        //$events = CalendarRutinas::all();
-        $events = Rutinas::all();
+        $events = CalendarRutinas::all();
+        //$events = Rutinas::all();
         $ban = 4;
 
         return view('rutinas.index_tablero', compact('events', 'ban'));
@@ -34,7 +33,7 @@ class CalendarRutinasController extends Controller
     public function create(Request $request)
     {
 
-        for ($i=0; $i < 2; $i++) {
+        /*for ($i=0; $i < 2; $i++) {
             $ruti = new Rutinas();
             $ruti->fecha = "Sin definir";
             if($i==0){
@@ -43,9 +42,9 @@ class CalendarRutinasController extends Controller
                 $ruti->horario = "pm";
             }
             $ruti->save();
-        }
+        }*/
 
-        /*$date = $request->input('date');
+        $date = $request->input('date');
         $name = $request->input('name');
         $horario = $request->input('horario');
         $pasillo = $request->input('pasillo');
@@ -56,7 +55,7 @@ class CalendarRutinasController extends Controller
         $evento->horario = $horario;
         $evento->pasillo = $pasillo;
 
-        $evento->save();*/
+        $evento->save();
 
         return redirect()->route('calendar-ruti.index')->with('success', 'Persona asignada correctamente.');
     }
@@ -82,9 +81,7 @@ class CalendarRutinasController extends Controller
      */
     public function edit($id)
     {
-        $top = Rutinas::find($id);
-        $ban = 4;
-        return view('rutinas.editar_rutina', compact('top', 'ban'));
+
     }
 
     /**
@@ -92,23 +89,7 @@ class CalendarRutinasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $top = Rutinas::find($id);
-        $top->fecha = $request->mes;
-        $top->horario = $request->horario;
 
-        $request->validate([
-            'imagen_url' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        if ($request->hasFile('imagen_url')) {
-            $imageName = 'RUTI-'.time() . '.' . $request->imagen_url->extension();
-            $request->imagen_url->move(public_path('images'), $imageName);
-            $top->imagen_url = '/images/' . $imageName;
-        }
-
-        $top->save();
-
-        return redirect('/calendar_ruti');
     }
 
     /**

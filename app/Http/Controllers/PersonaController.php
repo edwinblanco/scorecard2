@@ -66,8 +66,16 @@ class PersonaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Persona $persona)
+    public function destroy(Grupo $grupo, $id)
     {
-        //
+        $persona = Persona::find($id);
+
+        if ($persona) {
+            $persona->delete();
+            return redirect()->route('grupos.show', $grupo)->with('success', 'Persona agregada exitosamente.')->with('ban', 5);
+        } else {
+            return redirect()->route('grupos.show', $grupo)->with('error', 'Persona no encontrada.')->with('ban', 5);
+        }
+
     }
 }

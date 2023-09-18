@@ -107,6 +107,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/grupos/{grupo}', [GrupoController::class, 'show'])->name('grupos.show');
     Route::get('/grupos-create/{tipo}', [GrupoController::class, 'store'])->name('grupos.store');
     Route::post('/grupos/{grupo}/personas', [PersonaController::class, 'store'])->name('personas.store');
+    Route::get('/grupos/{grupo}/{id}', [PersonaController::class, 'destroy'])->name('personas.destroy');
 
 });
 

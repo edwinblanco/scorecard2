@@ -38,7 +38,12 @@
                 <h6>Coordinador</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'coordinador') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -48,7 +53,12 @@
                 <h6>Jefe</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'jefe') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -58,7 +68,12 @@
                 <h6>Aux almacenamiento</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'aux_almace') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -68,7 +83,12 @@
                 <h6>MontaCargas 1</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'monta1') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -78,7 +98,12 @@
                 <h6>MontaCargas 2</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'monta2') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -91,7 +116,12 @@
                 <h6>Base</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'base') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -101,7 +131,12 @@
                 <h6>TAT BGA</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'tatbga') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -111,7 +146,12 @@
                 <h6>TAT CUCUTA</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'tatcuc') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -121,7 +161,12 @@
                 <h6>COORD RIN</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'coordrin') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -134,7 +179,12 @@
                 <h6>Don Pastor</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'donpastor') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -144,7 +194,12 @@
                 <h6>Carro empresa 1</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'carro1') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -154,7 +209,12 @@
                 <h6>Aux carro 1</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'auxcarro1') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                       <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -164,7 +224,12 @@
                 <h6>Carro empresa 2</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'carro2') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -174,7 +239,12 @@
                 <h6>Aux carro 2</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'auxcarro2') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -187,7 +257,12 @@
                 <h6>Líder</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'liderr') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -197,7 +272,12 @@
                 <h6>Separador</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'separador') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -210,7 +290,12 @@
                 <h6>Monitoreo</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'monitoreo') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -223,7 +308,12 @@
                 <h6>Líderes</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'lider') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -233,7 +323,12 @@
                 <h6>Sensibles</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'sensibles') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -243,7 +338,12 @@
                 <h6>Unidades</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'unidades') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -253,7 +353,12 @@
                 <h6>Cajas</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'cajas') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -266,7 +371,12 @@
                 <h6>Capitan cargue</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'cap_cargue') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -276,7 +386,12 @@
                 <h6>Aux cargue</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'aux_cargue') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -286,7 +401,12 @@
                 <h6>Aux rin</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'aux_rin') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -296,7 +416,12 @@
                 <h6>Surtido</h6>
                 <ul class="list-group">
                     @foreach ($personas->where('tipo', 'surtido') as $persona)
-                        <li class="list-group-item">{{ $persona->nombre }}</li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center pe-1">
+                            {{ $persona->nombre }}
+                            <div>
+                                <a href="{{ route('personas.destroy', ['grupo' => $grupo, 'id' => $persona->id])}}" title="Eliminar"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -382,7 +507,7 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
 
